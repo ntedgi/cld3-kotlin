@@ -1,0 +1,1 @@
+/usr/bin/c++ -fPIC -g  -shared -Wl,-soname,libcld3_native.so -o libcld3_native.so CMakeFiles/cld3_native.dir/Cld3LangDetector.cpp.o CMakeFiles/cld3_native.dir/main.cpp.o  -L"/home/naor/Desktop/cld3-kotlin-adapter /." 

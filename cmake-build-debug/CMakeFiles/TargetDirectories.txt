@@ -1,0 +1,3 @@
+/home/naor/Desktop/cld3-kotlin-adapter /cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/home/naor/Desktop/cld3-kotlin-adapter /cmake-build-debug/CMakeFiles/cld3_native.dir
+/home/naor/Desktop/cld3-kotlin-adapter /cmake-build-debug/CMakeFiles/edit_cache.dir
