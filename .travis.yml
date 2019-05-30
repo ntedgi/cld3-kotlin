@@ -3,4 +3,4 @@ jdk:
   - openjdk8
 
 after_success:
-  - mvn clean test jacoco:report coveralls:report
+  - bash <(curl -s https://codecov.io/bash) -t 187da4be-aeee-4681-ae78-e199dce98794
