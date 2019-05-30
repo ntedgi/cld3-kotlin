@@ -7,18 +7,18 @@ Bridge from c++ to Kotlin using [Java Abstracted Foreign Function Layer](https:/
 
 
 ## C++ 
-```
+```cpp
 std::vector<Result> FindTopNMostFreqLangs(const string &text, int num_langs);
 ```
-```
+```cpp
 Result FindLanguage(const string &text);
 ```
 
 ## Kotlin
-```
+```kotlin
 fun findTopNMostFreqLangs(text: String, n: Int): List<LangDetectResponse> 
 ```
 
-```
+```kotlin
 fun detect(text: String): LangDetectResponse 
 ```
