@@ -1,0 +1,4 @@
+/home/naor/Downloads/clion-2019.1.3/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /home/naor/Desktop/cld3kotlin/src/main/cpp/cld3/src
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/naor/Desktop/cld3kotlin/src/main/cpp/cld3/src/cmake-build-debug
