@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.com/ntedgi/cld3-kotlin-wrapper.svg?branch=master)](https://travis-ci.com/ntedgi/cld3-kotlin-wrapper) [![codecov](https://codecov.io/gh/ntedgi/cld3-kotlin-wrapper/branch/master/graph/badge.svg)](https://codecov.io/gh/ntedgi/cld3-kotlin-wrapper)
+[![Build Status](https://travis-ci.com/ntedgi/cld3-kotlin.svg?branch=master)](https://travis-ci.com/ntedgi/cld3-kotlin) [![codecov](https://codecov.io/gh/ntedgi/cld3-kotlin/branch/master/graph/badge.svg)](https://codecov.io/gh/ntedgi/cld3-kotlin)
 
 
 # cld3-kotlin-wrapper
