@@ -6,16 +6,27 @@ import java.nio.ByteOrder
 import java.nio.charset.StandardCharsets
 
 
-const val LANGUAGE_DETECT_SHARED_FILE = "libnative.so"
+enum class OS {
+    LINUX, OSX
+}
+
+
+val OPERATION_SYSTEM = OS.LINUX
+const val LANGUAGE_DETECT_SHARED_FILE = "libnative"
 const val MIN_NUM_OF_BYTES = 0
 const val MAX_NUM_OF_BYTES = 10000
 const val SINGLE_LANGUAGE_DETECTION_BUFFER_SIZE = 100
 const val MULTI_LANGUAGE_DETECTION_BUFFER_SIZE = 300
+val OS_POSTFIX = if (OPERATION_SYSTEM == OS.OSX) ".dylib" else ".so"
+val LIB_PATH = "${System.getProperty("user.dir")}/src/main/lib/${OPERATION_SYSTEM.name.toLowerCase()}/"
 
-val LIB_PATH = "${System.getProperty("user.dir")}/src/main/lib/"
 
-
-data class LangDetectResponse(val probability: Float, val proportion: Float, val isReliable: Boolean, val language: String)
+data class LangDetectResponse(
+    val probability: Float,
+    val proportion: Float,
+    val isReliable: Boolean,
+    val language: String
+)
 
 class LangDetect : AutoCloseable {
 
@@ -23,9 +34,13 @@ class LangDetect : AutoCloseable {
     private val detector: NativeLangDetector
 
     init {
-        System.load("$LIB_PATH$LANGUAGE_DETECT_SHARED_FILE")
-        detector = LibraryLoader.create(NativeLangDetector::class.java).load("native")
+        System.load("$LIB_PATH$LANGUAGE_DETECT_SHARED_FILE$OS_POSTFIX")
+        detector = LibraryLoader.create(NativeLangDetector::class.java)
+            .search("${LIB_PATH}libc++.${OS_POSTFIX}")
+            .search("${LIB_PATH}libprotobuf_lite.${OS_POSTFIX}")
+            .load("native")
         ptr = detector.create1(MIN_NUM_OF_BYTES, MAX_NUM_OF_BYTES)
+
     }
 
     fun detect(text: String): LangDetectResponse {
