@@ -2,8 +2,6 @@ language: java
 os:
   - osx
 
-jdk:
-  - openjdk8
 
 after_success:
   - mvn clean test jacoco:report
