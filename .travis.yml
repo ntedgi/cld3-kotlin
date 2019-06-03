@@ -2,6 +2,7 @@ language: java
 os:
   - osx
 
+osx_image: xcode10.2
 
 after_success:
   - mvn clean test jacoco:report
