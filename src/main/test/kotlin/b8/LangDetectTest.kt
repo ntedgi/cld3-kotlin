@@ -14,6 +14,8 @@ internal class LangDetectTest {
             assert(result.language == "en")
             assert(result.isReliable)
             assert(result.proportion == 1f)
+            ld.close()
+
         }
 
         @Test
@@ -25,6 +27,8 @@ internal class LangDetectTest {
             assert(result.isReliable)
             assert(result.proportion == 1f)
         }
+
+
         @Test
         fun `Simple Build And Predict On English and Russian Text and n = 3`() {
             val englishText = "This piece of text is in English Този текст е на Български";

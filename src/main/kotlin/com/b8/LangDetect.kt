@@ -7,16 +7,16 @@ import java.nio.charset.StandardCharsets
 
 
 enum class OS {
-    LINUX, OSX
+    LINUX, OSX ,OSX_TEST
 }
 
 
-val OPERATION_SYSTEM = OS.LINUX
+val OPERATION_SYSTEM = OS.OSX
 const val LANGUAGE_DETECT_SHARED_FILE = "libnative"
 const val MIN_NUM_OF_BYTES = 0
 const val MAX_NUM_OF_BYTES = 10000
 const val SINGLE_LANGUAGE_DETECTION_BUFFER_SIZE = 100
-const val MULTI_LANGUAGE_DETECTION_BUFFER_SIZE = 300
+const val MULTI_LANGUAGE_DETECTION_BUFFER_SIZE = 900
 val OS_POSTFIX = if (OPERATION_SYSTEM == OS.OSX) ".dylib" else ".so"
 val LIB_PATH = "${System.getProperty("user.dir")}/src/main/lib/${OPERATION_SYSTEM.name.toLowerCase()}/"
 
@@ -36,8 +36,6 @@ class LangDetect : AutoCloseable {
     init {
         System.load("$LIB_PATH$LANGUAGE_DETECT_SHARED_FILE$OS_POSTFIX")
         detector = LibraryLoader.create(NativeLangDetector::class.java)
-            .search("${LIB_PATH}libc++.${OS_POSTFIX}")
-            .search("${LIB_PATH}libprotobuf_lite.${OS_POSTFIX}")
             .load("native")
         ptr = detector.create1(MIN_NUM_OF_BYTES, MAX_NUM_OF_BYTES)
 
@@ -65,7 +63,12 @@ class LangDetect : AutoCloseable {
 
     fun findTopNMostFreqLangs(text: String, n: Int): List<LangDetectResponse> {
         val buffer = ByteArray(MULTI_LANGUAGE_DETECTION_BUFFER_SIZE)
-        detector.findTopNMostFreqLangs(ptr, text, buffer, n)
+        try {
+            detector.findTopNMostFreqLangs(ptr, text, buffer, n)
+        }
+        catch (e:Exception){
+            e.printStackTrace()
+        }
         val result = ArrayList<LangDetectResponse>()
         ByteBuffer.wrap(buffer).order(ByteOrder.LITTLE_ENDIAN).let { byteBuffer ->
             val size = byteBuffer.int
