@@ -5,16 +5,11 @@ import java.nio.ByteBuffer
 import java.nio.ByteOrder
 import java.nio.charset.StandardCharsets
 
-
-const val LANGUAGE_DETECT_SHARED_FILE = "libnative.so"
 const val MIN_NUM_OF_BYTES = 0
 const val MAX_NUM_OF_BYTES = 10000
 const val SINGLE_LANGUAGE_DETECTION_BUFFER_SIZE = 100
-const val MULTI_LANGUAGE_DETECTION_BUFFER_SIZE = 300
+const val MULTI_LANGUAGE_DETECTION_BUFFER_SIZE = 250
 const val UNKNOWN_LANGUAGE = "UNKNOWN"
-
-val LIB_PATH = "${System.getProperty("user.dir")}/src/main/lib/"
-
 
 data class LangDetectResponse(
     val probability: Float,
@@ -136,13 +131,15 @@ class LangDetect : AutoCloseable {
         "haw" to "Hawaiian",
         "ceb" to "Cebuano"
     )
-
+    private val operatingSystemCoordinator = OperationSystemCoordinator()
+    private val os = operatingSystemCoordinator.getRunningOperationSystem()
     private var ptr: Long = -1
     private val detector: NativeLangDetector
 
     init {
-        System.load("$LIB_PATH$LANGUAGE_DETECT_SHARED_FILE")
-        detector = LibraryLoader.create(NativeLangDetector::class.java).load("native")
+        System.load(operatingSystemCoordinator.getOperationSystemSharedObjects(os).libPath())
+        detector = LibraryLoader.create(NativeLangDetector::class.java)
+            .load("native")
         ptr = detector.create1(MIN_NUM_OF_BYTES, MAX_NUM_OF_BYTES)
     }
 
@@ -159,16 +156,20 @@ class LangDetect : AutoCloseable {
         val probability = byteBuffer.float
         val proportion = byteBuffer.float
         val isReliable = byteBuffer.short
-        val sizeOfLang = byteBuffer.int
-        val languageBuffer = ByteArray(sizeOfLang) { 127.toByte() }
-        byteBuffer.get(languageBuffer, 0, sizeOfLang)
+        val sizeOfLanguage = byteBuffer.int
+        val languageBuffer = ByteArray(sizeOfLanguage) { 127.toByte() }
+        byteBuffer.get(languageBuffer, 0, sizeOfLanguage)
         val language = String(languageBuffer, StandardCharsets.UTF_8)
         return LangDetectResponse(probability, proportion, isReliable.toInt() == 1, language)
     }
 
     fun findTopNMostFreqLangs(text: String, n: Int): List<LangDetectResponse> {
         val buffer = ByteArray(MULTI_LANGUAGE_DETECTION_BUFFER_SIZE)
-        detector.findTopNMostFreqLangs(ptr, text, buffer, n)
+        try {
+            detector.findTopNMostFreqLangs(ptr, text, buffer, n)
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
         val result = ArrayList<LangDetectResponse>()
         ByteBuffer.wrap(buffer).order(ByteOrder.LITTLE_ENDIAN).let { byteBuffer ->
             val size = byteBuffer.int
@@ -177,7 +178,6 @@ class LangDetect : AutoCloseable {
             }
         }
         return result.toList()
-
     }
 
     fun changeLanguageCodeToFullName(languageCode: String): String {
