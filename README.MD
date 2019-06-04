@@ -1,5 +1,6 @@
 [![Build Status](https://travis-ci.com/ntedgi/cld3-kotlin.svg?branch=master)](https://travis-ci.com/ntedgi/cld3-kotlin) [![codecov](https://codecov.io/gh/ntedgi/cld3-kotlin/branch/master/graph/badge.svg)](https://codecov.io/gh/ntedgi/cld3-kotlin)
-
+[![star this repo](http://githubbadges.com/star.svg?user=ntedgi&repo=cld3-kotlin&style=flat)](https://github.com/boennemann/badges)
+[![fork this repo](http://githubbadges.com/fork.svg?user=ntedgi&repo=cld3-kotlin&style=flat)](https://github.com/boennemann/badges/fork)
 
 # cld3-kotlin
 Kotlin Wrapper for [CLD3](https://github.com/google/cld3) -  Google's Compact Language Detector 3 
