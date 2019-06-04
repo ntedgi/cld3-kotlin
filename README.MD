@@ -30,8 +30,13 @@ assert(languages.contains("UNKNOWN"))
 ```
 
 
+## Operations Support Systems:
 
-
+|Job | OS | State|
+|:------------- | :-------------:| -------------:|
+|[47.1](https://travis-ci.com/ntedgi/cld3-kotlin/builds/114315426)  | macOS | passed|
+|[47.2](https://travis-ci.com/ntedgi/cld3-kotlin/builds/114315426)  | Linux | passed|
+|not supported | windows | working on it |
 
 
 
