@@ -12,15 +12,20 @@ enum class OS {
 
 
 
-var OPERATION_SYSTEM = OS.OSX
+
 const val LANGUAGE_DETECT_SHARED_FILE = "libnative"
 const val MIN_NUM_OF_BYTES = 0
 const val MAX_NUM_OF_BYTES = 10000
 const val SINGLE_LANGUAGE_DETECTION_BUFFER_SIZE = 100
-const val MULTI_LANGUAGE_DETECTION_BUFFER_SIZE = 900
-val OS_POSTFIX = if (OPERATION_SYSTEM == OS.OSX) ".dylib" else ".so"
-val LIB_PATH = "${System.getProperty("user.dir")}/src/main/lib/${OPERATION_SYSTEM.name.toLowerCase()}/"
+const val MULTI_LANGUAGE_DETECTION_BUFFER_SIZE = 100
 const val UNKNOWN_LANGUAGE = "UNKNOWN"
+
+val OPERATION_SYSTEM = OS.OSX
+
+val OS_POSTFIX = if (OPERATION_SYSTEM == OS.OSX) ".dylib" else ".so"
+
+val LIB_PATH = "${System.getProperty("user.dir")}/src/main/lib/${OPERATION_SYSTEM.name.toLowerCase()}/"
+
 
 
 
@@ -202,6 +207,5 @@ class LangDetect : AutoCloseable {
     override fun close() {
         detector.deallocate(ptr)
     }
-
 
 }
