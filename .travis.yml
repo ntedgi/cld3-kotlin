@@ -1,6 +1,7 @@
 language: java
 os:
   - osx
+  - linux
 
 osx_image: xcode8
 
