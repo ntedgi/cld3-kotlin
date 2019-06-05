@@ -30,7 +30,7 @@ assert(languages.contains("UNKNOWN"))
 ```
 
 
-## Operations Support Systems:
+## Operations Systems Support:
 
 |Job | OS | State|
 |:------------- | :-------------:| -------------:|
