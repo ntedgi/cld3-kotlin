@@ -58,3 +58,12 @@ fun findTopNMostFreqLangs(text: String, n: Int): List<LangDetectResponse>
 ```kotlin
 fun detect(text: String): LangDetectResponse 
 ```
+
+```kotlin
+data class LangDetectResponse(
+    val probability: Float,
+    val proportion: Float,
+    val isReliable: Boolean,
+    val language: String
+)
+```
