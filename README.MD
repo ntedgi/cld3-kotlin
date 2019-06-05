@@ -32,11 +32,11 @@ assert(languages.contains("UNKNOWN"))
 
 ## Operations Systems Support:
 
-|Job | OS | State|
-|:------------- | :-------------:| -------------:|
-|[47.1](https://travis-ci.com/ntedgi/cld3-kotlin/builds/114315426)  | macOS | passed|
-|[47.2](https://travis-ci.com/ntedgi/cld3-kotlin/builds/114315426)  | Linux | passed|
-| -  | windows |not supported |
+|Job | OS | State| Shared Objects|
+|:------------- | :-------------:| :-------------:| :-------------:|
+|[47.1](https://travis-ci.com/ntedgi/cld3-kotlin/builds/114315426)  | macOS | passed| [dylib](https://github.com/ntedgi/cld3-kotlin/tree/master/src/main/lib/osx) 
+|[47.2](https://travis-ci.com/ntedgi/cld3-kotlin/builds/114315426)  | Linux | passed|[so](https://github.com/ntedgi/cld3-kotlin/tree/master/src/main/lib/unix) 
+| -  | windows |not supported |-|
 
 
 
