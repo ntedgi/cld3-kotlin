@@ -1,1 +1,0 @@
-/usr/bin/c++ -fPIC -g  -shared -Wl,-soname,libopencv_native.so -o libopencv_native.so CMakeFiles/opencv_native.dir/Cld3LangDetector.cpp.o  -L/home/naor/Desktop/cld3kotlin/src/main/cpp/cld3/src/.. 
