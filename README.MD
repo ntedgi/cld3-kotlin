@@ -1,5 +1,6 @@
 [![Build Status](https://travis-ci.com/ntedgi/cld3-kotlin.svg?branch=master)](https://travis-ci.com/ntedgi/cld3-kotlin) [![codecov](https://codecov.io/gh/ntedgi/cld3-kotlin/branch/master/graph/badge.svg)](https://codecov.io/gh/ntedgi/cld3-kotlin)
-[![codebeat badge](https://codebeat.co/badges/a92dd040-a71c-4644-96a9-daad0aeb9ac4)](https://codebeat.co/projects/github-com-ntedgi-cld3-kotlin-master)
+[![codebeat badge](https://codebeat.co/badges/a92dd040-a71c-4644-96a9-daad0aeb9ac4)](https://codebeat.co/projects/github-com-ntedgi-cld3-kotlin-master) [![](https://jitpack.io/v/ntedgi/cld3-kotlin.svg)](https://jitpack.io/#ntedgi/cld3-kotlin)
+
 # cld3-kotlin
 Kotlin Wrapper for [CLD3](https://github.com/google/cld3) -  Google's Compact Language Detector 3 
 
@@ -7,6 +8,27 @@ Bridge from c++ to Kotlin using [Java Abstracted Foreign Function Layer](https:/
 
 
 ## Usage Examples: 
+
+
+### add maven dependencies
+
+```maven
+<repositories>
+     <repository>
+         <id>jitpack.io</id>
+         <url>https://jitpack.io</url>
+     </repository>
+ </repositories>
+ ...
+ <dependency>
+      <groupId>com.github.ntedgi</groupId>
+      <artifactId>cld3-kotlin</artifactId>
+      <version>master-243b20b6d7-1</version>
+ </dependency>
+```
+
+### download [os shred objects](https://github.com/ntedgi/cld3-kotlin/tree/master/src/main/lib) add under src/lib/(os-name)
+
 
 ```kotlin
 val ld = LangDetect()
