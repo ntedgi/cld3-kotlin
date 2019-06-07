@@ -27,7 +27,7 @@ Bridge from c++ to Kotlin using [Java Abstracted Foreign Function Layer](https:/
  </dependency>
 ```
 
-### download [os shred objects](https://github.com/ntedgi/cld3-kotlin/tree/master/src/main/lib) add under src/lib/(os-name)
+### download [os shred objects](https://github.com/ntedgi/cld3-kotlin/tree/master/src/main/lib) and add them under src/lib/(os-name)
 
 
 ```kotlin
