@@ -2,7 +2,7 @@
 [![codebeat badge](https://codebeat.co/badges/a92dd040-a71c-4644-96a9-daad0aeb9ac4)](https://codebeat.co/projects/github-com-ntedgi-cld3-kotlin-master) [![](https://jitpack.io/v/ntedgi/cld3-kotlin.svg)](https://jitpack.io/#ntedgi/cld3-kotlin)
 
 # cld3-kotlin
-Kotlin Wrapper for [CLD3](https://github.com/google/cld3) -  Google's Compact Language Detector 3 
+Kotlin Wrapper for [CLD3](https://github.com/google/cld3#model) -  Google's Compact Language Detector 3 
 
 Bridge from c++ to Kotlin using [Java Abstracted Foreign Function Layer](https://github.com/jnr/jnr-ffi)
 
