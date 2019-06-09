@@ -137,7 +137,6 @@ class LangDetect : AutoCloseable {
     private val detector: NativeLangDetector
 
     init {
-        print(operatingSystemCoordinator.getOperationSystemSharedObjects(os).libPath())
         System.load(operatingSystemCoordinator.getOperationSystemSharedObjects(os).libPath())
         detector = LibraryLoader.create(NativeLangDetector::class.java)
             .load("native")
