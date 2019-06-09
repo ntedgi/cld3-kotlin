@@ -7,8 +7,12 @@ enum class SharedObject(private val postfix: String) {
     OSX("dylib"),
     UNIX("so"),
     WINDOWS("dll");
+
     fun libPath(): String {
-        val sharedObjectsFolder = "${System.getProperty("user.dir")}/src/main/lib/${this.name.toLowerCase()}/"
+        var sharedObjectsFolder = when (System.getProperty("os.name")) {
+            "Windows" -> "${System.getProperty("user.dir")}src\\main\\lib\\${this.name.toLowerCase()}\\"
+            else-> "${System.getProperty("user.dir")}/src/main/lib/${this.name.toLowerCase()}/"
+        }
         return "$sharedObjectsFolder$sharedLibrary.$postfix"
     }
 }

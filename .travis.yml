@@ -2,6 +2,7 @@ language: java
 os:
   - osx
   - linux
+  - windows
 
 osx_image: xcode8
 
