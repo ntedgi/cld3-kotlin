@@ -6,6 +6,15 @@ WIP - Kotlin [CLD3](https://github.com/google/cld3#model) -  Google's Compact La
 
 Bridge from c++ to Kotlin using [Java Abstracted Foreign Function Layer](https://github.com/jnr/jnr-ffi)
 
+## Operations Systems Support:
+
+|Job | OS | State| Shared Objects|
+|:------------- | :-------------:| :-------------:| :-------------:|
+|[47.1](https://travis-ci.com/ntedgi/cld3-kotlin/builds/114315426)  | macOS | passed| [dylib](https://github.com/ntedgi/cld3-kotlin/tree/master/src/main/lib/osx) 
+|[47.2](https://travis-ci.com/ntedgi/cld3-kotlin/builds/114315426)  | Linux | passed|[so](https://github.com/ntedgi/cld3-kotlin/tree/master/src/main/lib/unix) 
+| -  | windows |not supported |-|
+
+
 
 ## Usage Examples: 
 
@@ -53,13 +62,6 @@ assert(languages.contains("UNKNOWN"))
 ```
 
 
-## Operations Systems Support:
-
-|Job | OS | State| Shared Objects|
-|:------------- | :-------------:| :-------------:| :-------------:|
-|[47.1](https://travis-ci.com/ntedgi/cld3-kotlin/builds/114315426)  | macOS | passed| [dylib](https://github.com/ntedgi/cld3-kotlin/tree/master/src/main/lib/osx) 
-|[47.2](https://travis-ci.com/ntedgi/cld3-kotlin/builds/114315426)  | Linux | passed|[so](https://github.com/ntedgi/cld3-kotlin/tree/master/src/main/lib/unix) 
-| -  | windows |not supported |-|
 
 
 
