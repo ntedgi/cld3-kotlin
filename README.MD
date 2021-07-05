@@ -92,3 +92,9 @@ data class LangDetectResponse(
     val language: String
 )
 ```
+---
+```ts
+if (this.repo.isAwesome || this.repo.isHelpful) {
+  Star(this.repo);
+}
+```
